@@ -1,5 +1,5 @@
-# Bootstrap Travel
-Bootstrap Travel is an amateur mock-up of a travel agency website built as a class project.
+# Travelalot
+Travelalot is an amateur mock-up of a travel agency website built as a class project.
 
 | ReactJS | Typescript | TailwindCSS | Vite | React Router |
 |:-------:|:----------:|:-----------:|:----:|:------------:|
