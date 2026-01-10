@@ -46,11 +46,10 @@ Open at `http://localhost:5173`.
 ## Contributing
 This is a class project. If you're a team member:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/<feature-name>`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/<feature-name>`)
-5. Open a PR
+1. Create feature branch (`git checkout -b feature/<feature-name>`)
+2. Commit changes (`git commit -m 'Add some feature'`)
+3. Push to the branch (`git push origin feature/<feature-name>`)
+4. Open a PR
 
 ## License
 
