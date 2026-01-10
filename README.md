@@ -1,9 +1,9 @@
 # Bootstrap Travel
 Bootstrap Travel is an amateur mock-up of a travel agency website built as a class project.
 
-| ReactJS | Bootstrap | Vite | React Router |
-|:-------:|:---------:|:----:|:------------:|
-| <img height="64" width="64" src="https://cdn.simpleicons.org/react" alt="React" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/bootstrap" alt="Bootstrap" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/vite" alt="Vite" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/reactrouter" alt="React Router" style="padding: 5px; background-color: white; border-radius: 4px;" /> |
+| ReactJS | Typescript | TailwindCSS | Vite | React Router |
+|:-------:|:----------:|:-----------:|:----:|:------------:|
+| <img height="64" width="64" src="https://cdn.simpleicons.org/react" alt="React" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/typescript" alt="Typescript" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/Tailwindcss" alt="Tailwind" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/vite" alt="Vite" style="padding: 5px; background-color: white; border-radius: 4px;" /> | <img height="64" width="64" src="https://cdn.simpleicons.org/reactrouter" alt="React Router" style="padding: 5px; background-color: white; border-radius: 4px;" /> |
 
 ## Features
 - Home
@@ -33,7 +33,7 @@ npm -v
 git clone https://github.com/Mikroskil-IFA-Sore-A/travelalot.git
 
 # Navigate to project directory
-cd BootstrapTravel
+cd travelalot
 
 # Install dependencies
 npm install
