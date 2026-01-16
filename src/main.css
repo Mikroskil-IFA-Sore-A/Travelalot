@@ -1,44 +1,29 @@
 @import 'tailwindcss';
 
-:root {
-    --gray-100: #f3f4f6;
-    --gray-900: #172439;
-    --blue-600: #2563EB;
+* {
+    padding: 0px;
+    margin : 0px;
+    box-sizing: border-box;
+}
 
+@theme {
     --font-sans: "HelveticaNeue", sans-serif;
     --font-mono: "IBM Plex Mono", monospace;
 }
 
-body {
-    font-family: var(--font-sans);
-    
-    margin: 0px;
-    min-height: 100vh;
-    width: 100%;
-    
-    color: var(--blue-600);
-    background-color: var(--gray-100);
+@utility bg-grid {
+    :where(&) {
+        background-color: theme(colors.slate.50);
 
-    /* Grid */
-    background-image: linear-gradient(to right , rgba(37, 99, 235, 0.04) 2px, transparent 1px),
-                      linear-gradient(to bottom, rgba(37, 99, 235, 0.04) 2px, transparent 1px),
-                      linear-gradient(to left  , rgba(37, 99, 235, 0.08) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+        background-image: linear-gradient(to right , rgba(37, 99, 235, 0.04) 2px, transparent 1px),
+                          linear-gradient(to bottom, rgba(37, 99, 235, 0.04) 2px, transparent 1px),
+                          linear-gradient(to left  , rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
 
-    background-size: 
-        24px 24px,
-        24px 24px,
-        96px 96px,
-        96px 96px;
+        background-size:
+            24px 24px,
+            24px 24px,
+            96px 96px,
+            96px 96px;
+    }
 }
-
-/* body.dark {
-    color: #e5e7eb;
-    background-color: var(--gray-900);
-
-    background-image:
-        linear-gradient(to right , rgba(255, 255, 255, 0.04) 2px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 2px, transparent 1px),
-        linear-gradient(to left  , rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-} */
