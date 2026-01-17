@@ -5,11 +5,10 @@ import * as THREE from 'three'; // three.js (i.e. library untuk 3D)
 // Rencana-nya menggunakan React three fiber jg, tapi ini cukup simple -- so, i digress
 export default function(containerRef: RefObject<HTMLDivElement>, onReady?: () => void): void {
     useEffect(() => {
-
-        if (!containerRef.current)
+        const container = containerRef.current;
+        if (!containerRef.current) // tunggu div exit
             return;
 
-        const container = containerRef.current;
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(
             75,                                             // satuan degree
@@ -19,52 +18,35 @@ export default function(containerRef: RefObject<HTMLDivElement>, onReady?: () =>
         );
         camera.position.z = 5; // Bayangkan aja z-axis sebagai axis yang menuju ke kamera (basically jarak kamera dari objek)
         
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true,
-        });
-
-        renderer.setSize(
-            container.clientWidth,
-            container.clientHeight
-        );
-
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // idk, what it do but it is recommended...
         renderer.setClearColor(0x000000, 0);
-
         container.appendChild(renderer.domElement);
 
         // Icosahedron lebih appealing dari Sphere, itu kenapa aku pilih former
-        const geometry1 = new THREE.IcosahedronGeometry(3, 4);
-        const material1 = new THREE.MeshBasicMaterial({
-            color: 0x2196F3,
-        });
-        const mesh1 = new THREE.Mesh(geometry1, material1);
+        const geometry  = new THREE.IcosahedronGeometry(3, 4);
+        const material1 = new THREE.MeshBasicMaterial({ color: 0x2196F3 });
+        const material2 = new THREE.MeshBasicMaterial({ color: 0xEEEEEE, wireframe: true });
 
-        // Wireframe mesh
-        const geometry2 = new THREE.IcosahedronGeometry(3, 4);
-        const material2 = new THREE.MeshBasicMaterial({
-            color: 0xEEEEEE,
-            wireframe: true,
-        });
-        const mesh2 = new THREE.Mesh(geometry2, material2);
+        const mesh1 = new THREE.Mesh(geometry, material1);
+        const mesh2 = new THREE.Mesh(geometry, material2);
 
         const group = new THREE.Group();
-        group.add(mesh1);
-        group.add(mesh2);
-        scene.add(group);
+        group.add(mesh1, mesh2);
         group.position.set(0, -0.5, 0);
+        scene.add(group);
 
         const clock = new THREE.Clock();
-        let hasCalledReady = false;
 
+        // signal kalau sudah ready setelah frame pertama 
         const frame = () => {
             group.rotation.y += 0.25 * clock.getDelta(); // idk why, increment-ing y malah gerakin secara horizontal
             renderer.render(scene, camera);
 
-            if (!hasCalledReady) {
-                hasCalledReady = true;
-                onReady?.();
+            if (onReady) {
+                onReady();
+                onReady = undefined;
             }
         };
 
@@ -85,14 +67,12 @@ export default function(containerRef: RefObject<HTMLDivElement>, onReady?: () =>
         return () => {
             window.removeEventListener("resize", resize);
             renderer.setAnimationLoop(null);
-
-            geometry1.dispose();
+            geometry.dispose();
             material1.dispose();
-            geometry2.dispose();
             material2.dispose();
             renderer.dispose();
 
             container?.removeChild(renderer.domElement);
         };
-    }, [containerRef, onReady]);
+    }, [containerRef]);
 }
