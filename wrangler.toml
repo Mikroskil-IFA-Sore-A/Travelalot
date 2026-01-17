@@ -1,0 +1,7 @@
+# Cloudflare Workers configuration
+name = "travelalot"
+compatibility_date = "2026-01-17"
+
+# Serve static assets from the current directory
+[assets]
+directory = "./dist"
