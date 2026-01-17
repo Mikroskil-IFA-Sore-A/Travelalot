@@ -1,25 +1,26 @@
-import { useParams, Navigate, Link } from 'react-router-dom';
-import { CountryEntries } from '../data';
+import { useParams, Link } from 'react-router-dom';
+import { getContinent } from '../data/selectors';
 
-export default function CountryPage() {
+import NotFound from './NotFound';
+
+export default function() {
     const { continent } = useParams();
-    if (!continent)
-        return <Navigate to='/404' />;
+    const data = getContinent(continent);
 
-    const countries = CountryEntries[continent];
-    if (!countries)
-        return <Navigate to='/404' />;
+    if (!data)
+        return <NotFound />
 
     return (
         <div>
-            <h1>{continent.toUpperCase()}</h1>
+            <h1>{data.slug.toUpperCase()}</h1>
+
             <ul>
-                {Object.values(countries).map((c) => (
+                {Object.values(data.countries).map((c) => (
                     <li key={c.slug}>
-                        <Link to={`/${continent}/${c.slug}`}>{c.name}</Link>
+                        <Link to={`/${data.slug}/${c.slug}`}>{c.name}</Link>
                     </li>
                 ))}
             </ul>
         </div>
-    )
+    );
 }

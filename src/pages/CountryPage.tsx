@@ -1,23 +1,19 @@
-import { useParams, Navigate } from 'react-router-dom';
-import { CountryEntries } from '../data';
+import { useParams } from 'react-router-dom';
+import { getCountry } from '../data/selectors';
 
-export default function CountryPage() {
+import CountryNotFound from './CountryNotFound';
+
+export default function() {
     const { continent, country } = useParams();
-    if (!continent || !country)
-        return <Navigate to='/404' />;
+    const data = getCountry(continent, country);
 
-    const data = CountryEntries[continent]?.[country];
     if (!data)
-        return <Navigate to='/404' />;
+        return <CountryNotFound continent={continent} slug={country} />
 
     return (
         <div>
             <h1>{data.name}</h1>
             <p>{data.desc}</p>
-
-            {data.images.map((src) => (
-                <img src={src} alt={data.name} />
-            ))}
         </div>
-    )
+    );
 }
