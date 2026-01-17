@@ -41,7 +41,8 @@ npm install
 # Start development server
 npm run dev
 ```
-Open at `http://localhost:5173`.
+Open at `http://localhost:5173` <br>
+Demo at `https://travelalot.cheong-alberth05.workers.dev`
 
 ## Contributing
 This is a class project. If you're a team member:
