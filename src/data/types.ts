@@ -28,6 +28,4 @@ export type Cuisine = {
     image?: string;
 };
 
-
-
 export type Entries = Record<string, Continent>;
