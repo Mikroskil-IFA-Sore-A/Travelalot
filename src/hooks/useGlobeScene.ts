@@ -63,7 +63,7 @@ export default function(containerRef: RefObject<HTMLDivElement>, onReady?: () =>
 
         window.addEventListener("resize", resize);
 
-        // bersihkan (agak ironis, GB-collected language tp masih perlu free memori -- ya, palingan karena rely dengan WebGL api)
+        // bersihkan (agak ironis, GC language tp masih perlu free memori -- ya, palingan karena rely dengan WebGL api)
         return () => {
             window.removeEventListener("resize", resize);
             renderer.setAnimationLoop(null);
