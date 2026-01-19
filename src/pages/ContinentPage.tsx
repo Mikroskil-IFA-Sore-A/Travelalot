@@ -115,7 +115,7 @@ export default function ContinentPage() {
                                 </Link>
 
                                 <p className="text-gray-600 mt-2 text-sm">
-                                    {c.short}
+                                    {c.shortDesc}
                                 </p>
                             </div>
                         </article>
