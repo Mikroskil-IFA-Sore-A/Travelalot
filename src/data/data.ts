@@ -2,7 +2,6 @@ import type { Entries } from './types';
 import { buildImageIndex } from './imageIndex';
 
 const imageIndex = buildImageIndex();
-console.log("FINAL IMAGE INDEX: ", imageIndex);
 
 export const entries: Entries = {
     africa: {

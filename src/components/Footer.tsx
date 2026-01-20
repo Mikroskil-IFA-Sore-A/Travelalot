@@ -18,7 +18,7 @@ export default function Footer() {
 
             <p className="text-sm text-gray-600 whitespace-nowrap">
                 © {new Date().getFullYear()} Travelalot | Gateway to Great Destinations <br />
-                Site last updated: {new Date().toISOString().split('T')[0]}
+                Site last updated: 2026-01-20
             </p>
         </footer>
     );

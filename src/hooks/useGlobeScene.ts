@@ -3,10 +3,10 @@ import * as THREE from 'three'; // three.js (i.e. library untuk 3D)
 
 // Literally ini semua, aku dapat dari 'https://threejs.org/docs'
 // Rencana-nya menggunakan React three fiber jg, tapi ini cukup simple -- so, i digress
-export default function(containerRef: RefObject<HTMLDivElement>, onReady?: () => void): void {
+export default function(containerRef: RefObject<HTMLDivElement | null>): void {
     useEffect(() => {
         const container = containerRef.current;
-        if (!containerRef.current) // tunggu div exit
+        if (!container) // tunggu div exit
             return;
 
         const scene = new THREE.Scene();
@@ -43,24 +43,23 @@ export default function(containerRef: RefObject<HTMLDivElement>, onReady?: () =>
         const frame = () => {
             group.rotation.y += 0.25 * clock.getDelta(); // idk why, increment-ing y malah gerakin secara horizontal
             renderer.render(scene, camera);
-
-            if (onReady) {
-                onReady();
-                onReady = undefined;
-            }
         };
 
         renderer.setAnimationLoop(frame); // mirip 'requestAnimationFrame()'?
 
         const resize = () => {
-            const w = container.clientWidth;
-            const h = container.clientHeight;
+            const { clientWidth: w, clientHeight: h } = container;
+            if (w === 0 || h === 0) {
+                console.error("Bad client area");
+                return;
+            }
 
             camera.aspect = w / h;
             camera.updateProjectionMatrix();
             renderer.setSize(w, h);
         };
 
+        resize();
         window.addEventListener("resize", resize);
 
         // bersihkan (agak ironis, GC language tp masih perlu free memori -- ya, palingan karena rely dengan WebGL api)

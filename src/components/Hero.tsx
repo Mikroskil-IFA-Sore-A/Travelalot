@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import useGlobeScene from "@hooks/useGlobeScene";
 
 export default function () {
@@ -10,10 +10,8 @@ export default function () {
      * makanya kita pakai RefObject supaya diabaikan react (dalam konteks rendering ya) karena dimiliki oleh Three.js
      */
 
-    const [ready, setReady] = useState(false);
-    const globeRef = useRef<HTMLDivElement | null>(null);
-    
-    useGlobeScene(globeRef as React.RefObject<HTMLDivElement>, () => setReady(true));
+    const globeRef = useRef<HTMLDivElement | null>(null);    
+    useGlobeScene(globeRef as React.RefObject<HTMLDivElement>);
 
     return (
         <section className="relative w-full min-h-150 overflow-hidden flex items-center">
@@ -37,10 +35,9 @@ export default function () {
                             w-full h-full
                             ">
                 <div className="h-full w-150 me-10 ms-auto">
-                    <div ref={globeRef} 
-                         className={`h-full w-full
-                                     xl:scale-[100%] lg:scale-[90%] md:scale-[80%] sm:scale-[70%] scale-[60%]
-                                     transition-opacity ${ready ? 'opacity-100' : 'opacity-0'} duration-500`} />
+                    <div ref={globeRef}
+                         className="h-full w-full
+                                    xl:scale-[100%] lg:scale-[90%] md:scale-[80%] sm:scale-[70%] scale-[60%]"/>
                 </div>
             </div>
         </section>

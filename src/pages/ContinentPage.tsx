@@ -58,6 +58,8 @@ export default function ContinentPage() {
                             key={c.slug}
                             src={c.images[0]}
                             alt={c.name}
+                            loading='lazy'
+                            decoding='async'
                             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                                 index === current
                                     ? 'opacity-100'
@@ -69,18 +71,18 @@ export default function ContinentPage() {
                     {/* Controls */}
                     <button
                         onClick={prev}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 cursor-pointer"
                         aria-label="Previous"
                     >
-                        ‹
+                        <strong>&lt;</strong>
                     </button>
 
                     <button
                         onClick={next}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 cursor-pointer"
                         aria-label="Next"
                     >
-                        ›
+                        <strong>&gt;</strong>
                     </button>
                 </div>
             </section>
@@ -102,7 +104,8 @@ export default function ContinentPage() {
                                     src={c.images[0]}
                                     alt={c.name}
                                     className="h-48 w-full object-cover rounded-t-xl"
-                                    loading="lazy"
+                                    loading='lazy'
+                                    decoding='async'
                                 />
                             )}
 
