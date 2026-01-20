@@ -57,6 +57,8 @@ export default function CountryPage() {
                                 <img
                                     src={data.heroImage}
                                     alt={data.name}
+                                    loading='lazy'
+                                    decoding='async'
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
@@ -80,6 +82,8 @@ export default function CountryPage() {
                                 <img
                                     src={currentHotspot.image}
                                     alt={currentHotspot.name}
+                                    loading='lazy'
+                                    decoding='async'
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
@@ -102,6 +106,7 @@ export default function CountryPage() {
                                     <button
                                         onClick={prevSlide}
                                         className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/10 p-3 rounded-full"
+                                        aria-label='previous slide'
                                     >
                                         <ChevronLeft />
                                     </button>
@@ -109,6 +114,7 @@ export default function CountryPage() {
                                     <button
                                         onClick={nextSlide}
                                         className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/10 p-3 rounded-full"
+                                        aria-label='next slide'
                                     >
                                         <ChevronRight />
                                     </button>
@@ -138,6 +144,8 @@ export default function CountryPage() {
                                         <img
                                             src={item.image}
                                             alt={item.name}
+                                            loading='lazy'
+                                            decoding='async'
                                             className="w-full h-full object-cover"
                                         />
                                     ) : (

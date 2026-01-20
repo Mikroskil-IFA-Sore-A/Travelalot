@@ -48,14 +48,18 @@ export default function(containerRef: RefObject<HTMLDivElement | null>): void {
         renderer.setAnimationLoop(frame); // mirip 'requestAnimationFrame()'?
 
         const resize = () => {
-            const w = container.clientWidth;
-            const h = container.clientHeight;
+            const { clientWidth: w, clientHeight: h } = container;
+            if (w === 0 || h === 0) {
+                console.error("Bad client area");
+                return;
+            }
 
             camera.aspect = w / h;
             camera.updateProjectionMatrix();
             renderer.setSize(w, h);
         };
 
+        resize();
         window.addEventListener("resize", resize);
 
         // bersihkan (agak ironis, GC language tp masih perlu free memori -- ya, palingan karena rely dengan WebGL api)

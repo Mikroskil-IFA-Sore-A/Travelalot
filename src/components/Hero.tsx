@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import useGlobeScene from "@hooks/useGlobeScene";
 
 export default function () {
@@ -35,7 +35,7 @@ export default function () {
                             w-full h-full
                             ">
                 <div className="h-full w-150 me-10 ms-auto">
-                    <div ref={globeRef} 
+                    <div ref={globeRef}
                          className="h-full w-full
                                     xl:scale-[100%] lg:scale-[90%] md:scale-[80%] sm:scale-[70%] scale-[60%]"/>
                 </div>
